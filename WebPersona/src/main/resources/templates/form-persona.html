@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Registro de Personas</title>
+	</head>
+	<body>
+		<h1>Registro de Personas</h1>
+		<form id="f1" th:action="@{/save}" th:object=${persona} method="post" >
+			<p>
+				<label>ID: </label>
+				<input type="text" th:field="*{id}" readonly="readonly" /> 
+			</p>
+			<p>
+				<label>NOMBRE: </label>
+				<input type="text" th:field="*{nombre}" required="required" />
+			</p>
+			<p>
+				<label>APELLIDO: </label>
+				<input type="text" th:field="*{apellido}" required="required" />
+			</p>
+			<p>
+				<label>FEC. NAC.: </label>
+				<input type="date" th:field="*{fec_nac}" />
+			</p>
+			<p>
+				<label>SUELDO: </label>
+				<input type="text" th:field="*{sueldo}" />
+			</p>
+			<p>
+				<input type="submit" value="Guardar" />
+			</p>
+		</form>
+	</body>
+</html>

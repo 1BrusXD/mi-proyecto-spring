@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Listado de Personas</title>
+<script type="text/javascript">
+	function preguntar(id) {
+		if (confirm("¿Desea eliminar este registro?")) {
+			return true; // Permite seguir el enlace y hacer la redirección
+		} else {
+			return false; // Cancela la navegación
+		}
+	}
+</script>
+</head>
+<body>
+	<h1>Registro de Personas</h1>
+	<a href="/ingresarPersona">Ingresar Persona</a>
+
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>NOMBRES</th>
+				<th>APELLIDOS</th>
+				<th>FEC. NAC.</th>
+				<th>SUELDO</th>
+				<th>OPCIONES</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="p:${lista_persona}">
+				<td><span th:text=${p.id} /></td>
+				<td><span th:text=${p.nombre} /></td>
+				<td><span th:text=${p.apellido} /></td>
+				<td><span th:text=${p.fec_nac} /></td>
+				<td><span th:text=${p.sueldo} /></td>
+				<td>
+				<a th:href="@{/edit/}+${p.id}">Modificar</a> <a
+					th:href="@{/delete/}+${p.id}"
+					onclick="return preguntar('[[${p.id}]]')">Eliminar</a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
